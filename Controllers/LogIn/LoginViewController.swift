@@ -122,7 +122,10 @@ class LoginViewController: UIViewController
                                  height: 52)
     }
     // Login details validation
-    @objc private func loginButtonTapped(){
+    @objc private func loginButtonTapped()
+    {
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
         guard let email = emailField.text, let password = passwordField.text,
             !email.isEmpty, !password.isEmpty, password.count >= 6 else{
                 alertUserLoginError()
@@ -134,7 +137,7 @@ class LoginViewController: UIViewController
     // Alert
     func alertUserLoginError()
     {
-        let alert = UIAlertController(title: "Whoopa",
+        let alert = UIAlertController(title: "Whoops",
                                   message: "Please Enter All Information To LogIn.",
                                       preferredStyle: .alert)
         
@@ -153,7 +156,7 @@ class LoginViewController: UIViewController
     }
 }
 
-//EXTENSION: - 
+// MARK: - Textfield delegate
 extension LoginViewController: UITextFieldDelegate{
     func textFieldShouldClear(_ textField: UITextField) -> Bool
     {
